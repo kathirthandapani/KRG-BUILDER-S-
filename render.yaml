@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: krg-building-materials
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: NODE_ENV
+        value: production
+    disk:
+      name: krg-db
+      mountPath: /data
+      sizeGB: 1
+    # Move the database to the persistent disk
+    # We will need to update the server.js to use /data/database.sqlite if it exists

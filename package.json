@@ -1,0 +1,33 @@
+{
+  "name": "stitch_product_catalog_equipment_rental",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "browser": "browser-sync start --proxy \"localhost:3000\" --files \"**/*.html, **/*.js, **/*.css\" --no-open",
+    "dev": "concurrently \"npm run server\" \"npm run browser\"",
+    "sync": "git add . && git commit -m \"Live Update: %DATE% %TIME%\" && git push origin main",
+    "auto-sync": "chokidar \"**/*.html\" \"**/*.js\" \"**/*.css\" -c \"npm run sync\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.2.1",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "open": "^11.0.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^9.2.1",
+    "nodemon": "^3.1.11"
+  }
+}

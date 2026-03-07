@@ -1,0 +1,164 @@
+:root {
+    --primary: #FF9500;
+    --primary-hover: #EA580C;
+    --bg-light: #F3F4F6;
+    --bg-dark: #1C1917;
+    --surface-light: #FFFFFF;
+    --surface-dark: #292524;
+    --text-main-light: #1C1917;
+    --text-main-dark: #F5F5F4;
+    --text-sub-light: #57534E;
+    --text-sub-dark: #A8A29E;
+    --border-light: #E7E5E4;
+    --border-dark: #44403C;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-display: 'Oswald', 'Inter', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&display=swap');
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-light);
+    color: var(--text-main-light);
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+body.dark {
+    background-color: var(--bg-dark);
+    color: var(--text-main-dark);
+}
+
+.font-display {
+    font-family: var(--font-display);
+}
+
+.maxHeight-screen {
+    max-height: calc(100vh - 2rem);
+}
+
+@media (max-width: 640px) {
+    .maxHeight-screen {
+        max-height: calc(100vh - 1rem);
+    }
+}
+
+/* Page Transition Styles */
+.view-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+}
+
+.view.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    position: relative;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+/* Glassmorphism Classes */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+    background: rgba(41, 37, 36, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Premium OTP & Order Enhancements */
+.otp-box {
+    width: 3.5rem;
+    height: 4rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    border: 2px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .otp-box {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.otp-box:focus {
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 10px 15px -3px rgba(255, 149, 0, 0.1);
+    transform: translateY(-2px);
+    outline: none;
+}
+
+.dark .otp-box:focus {
+    background: #1c1917;
+}
+
+@keyframes successScale {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.animate-success {
+    animation: successScale 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
